@@ -55,6 +55,17 @@ export default function Header({ header, entries }: {header: HeaderProps, entrie
   
   return (
     <header className='header'>
+      <div className='note-div'>
+        {headerData?.notification_bar.show_announcement ? (
+          typeof headerData.notification_bar.announcement_text === 'string' && (
+            <div {...headerData.notification_bar.$?.announcement_text as {}}>
+              {parse(headerData.notification_bar.announcement_text)}
+            </div>
+          )
+        ) : (
+          <Skeleton />
+        )}
+      </div>
       <div className='max-width header-div'>
         <div className='wrapper-logo'>
           {headerData ? (
